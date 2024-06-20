@@ -1,0 +1,63 @@
+<%- include('../partials/header.ejs')%>
+        <!-- Sell Content-->
+        <section class="sellPage">
+
+            <div class="sellTxt">
+                <h1 class="newh1">EDIT POST</h1> 
+            </div>
+
+            <div class="inputBody">
+                <div class="inputContainer">
+
+                    <form method="POST" action="/items/<%=item.id%>?_method=PUT" class="new-form" enctype="multipart/form-data">
+                        <div class="drop">
+                            <label for="harvest">Harvest Date</label>
+                            <select id="harvest" name="condition" required> 
+                                <option value="Still on the branch" <%= item.condition === 'Still on the branch' ? 'selected' : '' %> >Still on the branch</option>
+                                <option value="Harvested Yesterday" <%= item.condition === 'Harvested Yesterday' ? 'selected' : '' %> >Harvested Yesterday</option>
+                                <option value="Harvested 2 days ago" <%= item.condition === 'Harvested 2 days ago' ? 'selected' : '' %> >Harvested 2 days ago</option>
+                                <option value="Harvested 3 days ago" <%= item.condition === 'Harvested 3 days ago' ? 'selected' : '' %> >Harvested 3 days ago</option>
+                                <option value="Harvested 4 days ago" <%= item.condition === 'Harvested 4 days ago' ? 'selected' : '' %> >Harvested 4 days ago</option>
+                                <option value="Harvested 5 days ago" <%= item.condition === 'Harvested 5 days ago' ? 'selected' : '' %> >Harvested 5 days ago</option>
+                                <option value="Harvested a week ago" <%= item.condition === 'Harvested a week ago' ? 'selected' : '' %> >Harvested a week ago</option>
+                                <option value="Harvested this season" <%= item.condition === 'Harvested this season' ? 'selected' : '' %> >Harvested this season</option>
+                            </select> <br> <br>
+                        </div>
+
+
+                        <div class="title">
+                            <label for="titleInput">Title</label>
+                            <input type="text" id="titleInput" name="title" value="<%=item.title%>" required minlength="4" maxlength="20">
+                        </div>
+
+                        <div class="name">
+                            <label for="nameInput">Name</label>
+                            <input type="text" id="nameInput" name="seller" value="<%=item.seller%>" required minlength="2" maxlength="30">
+                        </div>
+
+                        <div class="priceInput">
+                            <label for="numberInput">Price</label>
+                            <input type="number" id="numberInput" min="1" max="999" step="1" name="price" value="<%=item.price%>" required >
+                        </div>
+
+                        <div class="describeInput">
+                            <label for="describe">Description</label>
+                            <textarea id="describe" name="details" rows="2" cols="50" required minlength="10" maxlength="150"><%=item.details%></textarea>
+                        </div>
+
+                        <div class="upload">
+                            <label for="imageUpload">Image</label>
+                            <div class="buttonBox">
+                                <input type="file" id="imageUpload" name="image">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <button class="infoSubmit">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+<%- include('../partials/footer.ejs')%>

@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs')%>
+        <!--
+            List of items for sale
+        -->
+
+        <!-- Homepage Content-->
+        <section class="itemsContainer">
+        
+            <ul class="goods">
+                <%if (produce.length > 0) {%>
+                    <%for(let i=0; i < produce.length; i++) {%>
+                        <li class="good">
+                            <a href='/items/<%=produce[i].id%>'>
+                                <img class="pic" src="/<%=produce[i].image%>" alt="img">
+                                <h3 class="itemTxt"><%=produce[i].title%></h3> 
+                                <p class="condition"><%=produce[i].condition%></p> <br> <br>
+                                <p class="price">$<%=produce[i].price%></p><span class="offer"><%=produce[i].totalOffers%> offers</span>
+                            </a>
+                        </li>
+                    <%}%>
+                <%} else {%>
+                    <p>There are no items to view.</p>
+                <%}%>
+            </ul>
+        </section>
+        
+<%- include('../partials/footer.ejs')%>

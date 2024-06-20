@@ -1,0 +1,37 @@
+<%- include('../partials/header.ejs')%>
+        <!-- Item Content-->
+        <%if(produce) {%>
+        <section class="itemPage">
+            <img class="itemPic" src="/<%=produce.image%>" alt="produce">
+            <div class="itemDetails">
+                <h3 class="itemTxt"><%=produce.title%></h3> 
+                <p class="condition"><%=produce.condition%></p> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+                <p class="seller"><%=produce.seller.firstName + ' ' + produce.seller.lastName%></p> 
+                <p class="description"><%=produce.details%></p></p> <br>
+                <p class="price">$<%=produce.price%></p><span class="offer"><%=produce.totalOffers%> offers</p></span> <br>
+            </div>
+
+        </section>
+        <%} else {%>
+            <p>No item matches that id.</p>
+        <%}%>
+
+        <%if(produce.active) {%>
+            <form method="POST" action='/items/<%=produce.id%>/offers' class="new-form" enctype="multipart/form-data">
+                <div class="offerInput">
+                    <input type="number" id="amount" min="1" max="999" step="1" name="amount">
+                </div>
+                <div>
+                    <button type="submit" class="infoSubmit">Make an Offer</button>
+                </div>
+                
+            </form>
+
+            <div>
+                <p>Current highest offer: <%=produce.highestOffer%></p>
+            </div>
+
+        <%} else {%>
+            <p>Listing is not available.</p>
+        <%}%>
+<%- include('../partials/footer.ejs')%>

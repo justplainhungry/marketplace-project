@@ -1,0 +1,60 @@
+<%- include('../partials/header.ejs')%>
+        <!-- Sell Content-->
+        <section class="sellPage">
+
+            <div class="sellTxt">
+                <h1 class="newh1">SELL YOUR HARVEST LOCALLY</h1> <br>
+                <p class="newP">Sell your fresh organic homegrown produce and artisan goods to your local <br>
+                                community. Create a listing with us fast and back to the great outdoors!</p>
+            </div>
+            
+            <div class="inputBody">
+                <div class="inputContainer">
+                    <form method="POST" action='/items' class="new-form" enctype="multipart/form-data">
+                        <div class="drop">
+
+                            <label for="condition">Harvest Date</label>
+                            <select id="condition" name="condition" required>
+                                <option value="" disabled selected>Select</option>
+                                <option value="Still on the branch">Still on the branch</option>
+                                <option value="Harvested Yesterday">Harvested Yesterday</option>
+                                <option value="Harvested 2 days ago">Harvested 2 days ago</option>
+                                <option value="Harvested 3 days ago">Harvested 3 days ago</option>
+                                <option value="Harvested 4 days ago">Harvested 4 days ago</option>
+                                <option value="Harvested 5 days ago">Harvested 5 days ago</option>
+                                <option value="Harvested a week ago">Harvested a week ago</option>
+                                <option value="Harvested this season">Harvested this season</option>
+                            </select> <br> <br>
+
+                        </div>
+
+                        <div class="title">
+                            <label for="titleInput">Title</label>
+                            <input type="text" id="titleInput" name="title" required minlength="4" maxlength="20">
+                        </div>
+
+                        <div class="priceInput">
+                            <label for="numberInput">Price</label>
+                            <input type="number" id="numberInput" min="1" max="999" step="1" name="price" required>
+                        </div>
+
+                        <div class="describeInput">
+                            <label for="describe">Description</label>
+                            <textarea id="describe" name="details" rows="2" cols="50" required minlength="10" maxlength="150"></textarea>
+                        </div>
+
+                        <div class="upload">
+                            <label for="imageUpload">Image</label>
+                            <div class="buttonBox">
+                                <input type="file" id="imageUpload" name="image" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="infoSubmit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+<%- include('../partials/footer.ejs')%>

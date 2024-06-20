@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible"  content="IE=edge">
+        <meta name="viewport" content="width=device=width, initial-scale=1.0">
+        <title>Organic Orbit</title>
+        <link rel="stylesheet" href="/css/styles.css">
+
+        
+    </head>
+
+    <body>
+        <header>
+
+            <div class="container">
+                <a href='/' class="home"><img class="logo" src="/logos/orangeLogo.jpeg" alt="orangeLogo"></a>
+            </div>
+
+            <form action="/items" method="GET">
+                <div class="container">
+                    <input class="search" type="text" placeholder="Search..." name="search">
+                </div>
+            </form>
+
+            <div class="container">
+                <nav class="navigation">
+                    <ul>
+                        <li class="navItem"><a href='/items' class="browse">Browse</a></li>
+                        <li class="navItem"><a href='/items/new' class="sell">Sell</a></li>
+                        <%if(!user) {%>
+                            <li class="navItem"><a href='/users/new'>Sign Up</a></li> 
+                            <li class="navItem"><a href='/users/login'>Login</a></li> 
+                        <%} else {%>
+                            <li class="navItem"><a href='/users/profile'>My Account</a></a></li> 
+                            <li class="navItem"><a href='/users/logout'>Logout</a></li>
+                        <%}%>
+                    </ul>
+                </nav>
+            </div>
+
+            <% if(errorMessages.length > 0) {%>
+                <% errorMessages.forEach(message=>{%>
+                    <div class='error'>
+                        <%=message%>
+                    </div>
+                    <%});%>
+                        <%}%>
+            
+                            <% if(successMessages.length > 0) {%>
+            
+                                <% successMessages.forEach(message=>{%>
+                                    <div class='success'>
+                                        <%=message%>
+                                    </div>
+                                    <%});%>
+                                        <%}%>
+
+            
+        </header>

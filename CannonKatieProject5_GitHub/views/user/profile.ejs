@@ -1,0 +1,99 @@
+<%- include('../partials/header.ejs')%>
+  <div class="profileBox">
+  <h2 class="homeTxt">Welcome, <%= user.firstName + " " + user.lastName%></h2>
+  <br><br>
+  <h3 class="listingsTxt">My Listings</h3>
+
+  <table class="tabl">
+      <thead>
+        <tr>
+          <th class="topCol">Produce</th>
+          <th class="topCol">Status</th>
+          <th class="topCol">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%if (produce.length) {%>
+          <% produce.forEach(produce => {%>
+          <tr>
+                <td><a href='/items/<%=produce.id%>'><%=produce.title%></a></td>
+                <td>
+                  <%if (produce.active === true) {%>
+                    <p class="active">active</p>
+                  <%} else {%>
+                    <p class="active">inactive</p>
+                  <%}%>
+                </td>
+                <td>
+                    <!-- Edit form -->
+                    <form action="/items/<%= produce.id %>/edit" method="GET">
+                      <button type="submit" class="butto" id="ed">Edit</button>
+                    </form>
+                    <!-- Delete form -->
+                    <form action="/items/<%= produce.id %>/?_method=DELETE" method="POST">
+                        <button type="submit" class="butto" id="del">Delete</button>
+                    </form>
+
+                    <%if (produce.totalOffers !== 0) {%>
+                    <!--View Offers Form (not disabled)-->
+                    <form action="/items/<%= produce.id %>/offers" method="GET">
+                      <button type="submit" class="butto" id="del">View Offers</button>
+                    </form>
+                    <%} else {%>
+                      <form action="/items/<%= produce.id %>/offers" method="GET">
+                        <button type="submit" class="butto" id="del" disabled>View Offers</button>
+                      </form>
+                    <%}%>
+
+                </td>
+          </tr>
+        <% })%>
+        <%} else {%>
+          <tr>
+            <td class="currentTxt"><p>You have no current listings.</p></td>
+          </tr>
+        <%}%>
+      </tbody>
+  </table>
+  <br><br>
+
+  <h3 class="listingsTxt">My Offers</h3>
+  <table class="tabl">
+    <thead>
+      <tr>
+        <th class="topCol">Produce</th>
+        <th class="topCol">Status</th>
+        <th class="topCol">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%if (produce.length) {%>
+        <% produce.forEach(produce => {%>
+        <tr>
+              <td><a href='/items/<%=produce.id%>'><%=produce.title%></a></td>
+              <td>
+                <%if (produce.active === true) {%>
+                  <p class="active">active</p>
+                <%} else {%>
+                  <p class="active">inactive</p>
+                <%}%>
+              </td>
+              <td>
+                  <p class="amount"><%=offer.amount%></p><!-- IS THIS CORRECT? -->
+              </td>
+        </tr>
+      <% })%>
+      <%} else {%>
+        <tr>
+          <td class="currentTxt"><p>You have no current offers.</p></td>
+        </tr>
+      <%}%>
+    </tbody>
+</table>
+  
+  </div>
+</body>
+
+</html>
+
+<%- include('../partials/footer.ejs')%>
