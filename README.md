@@ -1,1 +1,7 @@
 # marketplace-project
+
+OrganicOrbit is a marketplace web application where users can buy and sell their locally grown produce to other locals looking for fresh fruits, veggies, and homemade goods. Each user must make an account in order to submit an offer on an item or create an item to sell to other users. Users have a choice to accept offers made on their available items. Users can bid varying prices of their items. Items have a base price and the amount of offers shown.
+
+This project was a final project submission of a network-based application development class taken in the spring of 2024 at UNCC held by Prof. Liquan Cao. She introduced the concept of MVC architecture, coding languages such as EJS, JavaScript, HTML, the use of middlewares and express. 
+The following was my submission. The only thing missing to this project are all the dependancies which are all installed when entering 'npm i' in the VS Code terminal.
+To run the application, enter 'nodemon app' in the terminal and enter in the browser 'localhost:3000'. Each produce item pulls and submits data to and from a mongoDB server. Each produce item accepts an offer from a user who must be signed in for an offer to be submitted. Users can sign in using the navigation menu or create an account. Users can also search the database for any specific produce item. Upon signing up, users submit their email addresses and create passwords, which are encrypted in the database. 
